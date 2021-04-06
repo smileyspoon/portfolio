@@ -1,22 +1,40 @@
+
+//react related imports
 import React from 'react';
-import _ from 'lodash';
-import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
-import  { Row, Container, Col, Button, Image, Card, CardDeck,Form, FormControl,  } from 'react-bootstrap';
+import { render } from "react-dom";
+import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom';
+import { Container } from "react-bootstrap";
 
-
-import logo from './logo.svg';
-import './App.css';
+//other imports
 import { auth, database, getCurrentUser, createUserProfileDocument, signOut } from './firebase';
+import _ from 'lodash';
+
+//component imports
+import firebase from 'firebase/app';
+import './App.css';
+import { Navigation } from './components/Navigation/Navbar';
+import { Dashboard } from './components/Sections/Dashboard';
+
 
 const App = () => {
 
-  return  (
+  return (
 
-      <div>Start</div>
-    
-          );
+      
+      <Router>
+        <Navigation />
+
+        <Switch>
+          <Route exact path ="/" component={Dashboard} />
+
+        </Switch>
+
+      </Router>
+
+  );
+
+
       
 }
 
 export default App;
-
