@@ -20,16 +20,20 @@ const App = () => {
 
   return (
 
-      
-      <Router>
+    <Container>
         <Navigation />
+    </Container>
+      
+      // <Router>
+      //   <Navigation />
 
-        <Switch>
-          <Route exact path ="/" component={Dashboard} />
+      //   <Switch>
+      //     <Route exact path ="/" component={Dashboard} />
 
-        </Switch>
+      //   </Switch>
 
-      </Router>
+      // </Router>
+
 
   );
 
