@@ -9,14 +9,28 @@ return (
     <Navbar>
         <Nav.Link href="/">
             <span>
-            Dashboard
+            Home
             </span>
         </Nav.Link>
-        <NavDropdown title="Listing" id="listing__dropdown">
-                <NavDropdown.Item href="/listing/page">Listing Page</NavDropdown.Item>
-                <NavDropdown.Item href="/listing/add">Add New Listing</NavDropdown.Item>
-                    <NavDropdown.Item href="/listing/edit_delete">Edit or Delete Listing</NavDropdown.Item>
-        </NavDropdown>
+
+        <Nav.Link href="/pomodoro">
+            <span>
+            Pomodoro
+            </span>
+        </Nav.Link>
+
+        <Nav.Link href="/about">
+            <span>
+            About
+            </span>
+        </Nav.Link>
+
+        <Nav.Link href="/contact">
+            <span>
+            Contact
+            </span>
+        </Nav.Link>
+
 
     </Navbar>
 
