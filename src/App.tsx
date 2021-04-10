@@ -25,13 +25,15 @@ import { Jumbotron } from './components/Jumbotron/Jumbotron';
 
 
 const App = (props: any) => {
-
+  
   return (
 
     //Fragment is used here so I can have multiple components and App still work
     //If Navigation and Router was not wrapped in React.Fragment, the app would give an error
     <React.Fragment>
       <Navigation />
+      
+      {/* Not using jumbotron for now */}
       <Jumbotron/>
 
       {/* Layout is the wrapper around the major part of the App */}

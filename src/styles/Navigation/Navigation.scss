@@ -1,3 +1,108 @@
-.Navbar {
+
+.navbar{
+  
+    width: $default-margin;
+    height: 100vh; //100% vertical height
+    background-color: $bg-primary;
+    position: fixed;
+    transition: width 200ms ease;  //this is the slow navbar animation instead of instant
+  
+  
+    &-nav {
+  
+    margin:0;
+    padding:0;
+  
+    display: flex;
+    list-style: none;
     
-}
+    align-items: center;
+    
+    }
+  
+    .nav-item {
+      width:100%
+    }
+  
+    .nav-item:last-child{
+      margin-top:auto;
+    }
+  
+     .logo {
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      text-align: center;
+      background: $bg-secondary;
+      letter-spacing: 0.3ch;
+      width: 100%;
+      font-family: $nav-bar-title-font;
+  
+  
+    }
+  
+    //has to be out side of logo since the honver has to be at the navrbar:hover not .logo:hover
+    //if if did logo:hover, only when the logo is highlighted, the svg would move
+    &:hover .logo svg{
+    
+      transform: rotate(-180deg);
+      transition: transform($nav-transition-speed);
+    
+  }
+  
+    //parameters for the svg/link
+    .nav-link {
+      display: flex;
+      align-items: center;
+      height:$default-margin; //this is set the height as same as the overall margin
+      color:$text-primary;
+      
+      text-decoration: none; //setting it so the link does not have a text
+      transition: $nav-transition-speed;
+  
+  
+  
+      //providing basic dimention to the svg
+      svg {
+        width: 2rem; //giving it a basic dimention will make the icon not move around, as you hover
+  
+  
+        min-width: 2rem;
+        margin: 0 1.5rem;
+      }
+  
+      &:hover {
+  
+      //changes color of the link and also the backgroup color to creat contrast
+      color:$text-secondary;
+      transition: $nav-transition-speed;
+      background: $bg-secondary;
+  
+  
+      }
+    }
+  
+    
+  
+    //link-text will not appear when we do not hover over
+    .link-text {
+      display: none;
+      margin-left:1rem;
+      font-family: $nav-bar-font;
+    }
+  
+    //when you hover over, the width will increase and also the 
+    //text will appear
+    &:hover{
+      width: 16rem;
+  
+      .link-text {
+        display: block;
+      }
+    }
+  
+  
+  
+  
+    
+  }
