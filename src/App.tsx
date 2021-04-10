@@ -19,10 +19,12 @@ import { About } from './components/About/About';
 import { Contact } from './components/Contact/Contact';
 import { NoMatch } from './components/NoMatch/NoMatch';
 import { Layout } from './layouts/Layout';
+import { Jumbotron } from './components/Jumbotron/Jumbotron';
 
 
 
-const App = () => {
+
+const App = (props: any) => {
 
   return (
 
@@ -30,6 +32,7 @@ const App = () => {
     //If Navigation and Router was not wrapped in React.Fragment, the app would give an error
     <React.Fragment>
       <Navigation />
+      <Jumbotron/>
 
       {/* Layout is the wrapper around the major part of the App */}
       <Layout>
@@ -48,22 +51,6 @@ const App = () => {
         </Router>
       </Layout>
     </React.Fragment>
-
-
-
-    // <Container>
-    //     <Navigation />
-    // </Container>
-      
-      // <Router>
-      //   <Navigation />
-
-      //   <Switch>
-      //     <Route exact path ="/" component={Dashboard} />
-
-      //   </Switch>
-
-      // </Router>
 
 
   );

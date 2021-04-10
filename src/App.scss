@@ -1,39 +1,123 @@
-.App {
-    text-align: center;
+@import './styles/variables';
+
+
+* {
+    
+  box-sizing: border-box;
+
+}
+
+:root {
+  font-size: 16px;
+  font-family: 'Open Sans';
+
+}
+
+
+body {
+
+  color: black;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+
+  &::-webkit-scrollbar {
+    width:0.25rem;
+  }
+
+  &::-webkit-scrollbar-track {
+
+    background: #1e1e24;
+
+
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #6649b8;
+    
+
   }
   
-  .App-logo {
-    height: 40vmin;
-    pointer-events: none;
-  }
+
+}
+
+.app {
+  margin: $default-margin;
+  padding: 1rem;
+
   
-  @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
-    }
-  }
+
+}
+
+.jumbotron{
+  margin-left: $default-margin;
+  padding: 1rem;
   
-  .App-header {
-    background-color: #282c34;
-    min-height: 100vh;
+
+}
+
+.navbar{
+  
+  width: $default-margin;
+  height: 100vh; //100% vertical height
+  background-color: $bg-primary;
+  position: fixed;
+  transition: width 200ms ease;  //this is the slow navbar animation instead of instant
+
+
+  &-nav {
+
+  margin:0;
+  padding:0;
+
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  align-items: center;
+  
+  }
+
+  .nav-item {
+    width:100%
+  }
+
+  .nav-item:last-child{
+    margin-top:auto;
+  }
+
+  //parameters for the svg/link
+  .nav-link {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  }
-  
-  .App-link {
-    color: #61dafb;
-  }
-  
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
+    height:$default-margin; //this is set the height as same as the overall margin
+    color:$text-primary;
+    text-decoration: none; //setting it so the link does not have a text
+
+    //providing basic dimention to the svg
+    svg {
+      width: 2rem; //giving it a basic dimention will make the icon not move around, as you hover
+      min-width: 2rem;
+      margin: 0 1.5rem;
     }
   }
+
+  //link-text will not appear when we do not hover over
+  .link-text {
+    display: none;
+    margin-left:1rem;
+  }
+
+  //when you hover over, the width will increase and also the 
+  //text will appear
+  &:hover{
+    width: 16rem;
+
+    .link-text {
+      display: block;
+    }
+  }
+
+  
+}
+
   

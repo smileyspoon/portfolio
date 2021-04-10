@@ -14,7 +14,7 @@ export const NoMatch = (props: any) => {
 
 
     (
-      <div>Home Page</div>
+      <div>404</div>
     )
 
     );
