@@ -1,0 +1,27 @@
+
+.jumbotron{
+    display: flex;
+    margin-left: $default-margin;
+    height: 5rem;
+    background-color:$bg-secondary;
+    justify-content: center;
+  
+  
+    
+    &__image {
+      height:80%;
+      margin-left: 1rem;
+      margin-top: 1rem;
+  
+    }
+  
+    .title{
+  
+      
+      color:white;
+      font-weight: bold;
+      font-size: 1.5rem;
+      font-family: $jumbotron-font;
+  
+    }
+  }
