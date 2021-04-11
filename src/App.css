@@ -104,6 +104,11 @@
   margin: 0 1.5rem;
   margin-top: 1.25rem;
 }
+@media only screen and (min-width: 600px) {
+  .navbar .nav-link svg {
+    margin-top: 0;
+  }
+}
 .navbar .nav-link:hover {
   color: white;
   transition: 100ms;

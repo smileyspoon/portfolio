@@ -57,6 +57,8 @@
       
     }
   
+    //maybe implement this later.  supposed to have the last child
+    //of list item to be at the bottom
     .nav-item:last-child{
       // margin-top:auto;
     }
@@ -75,6 +77,7 @@
       svg {
 
         display:none;
+
 
         @media only screen and (min-width:$breakpoints) { 
           display:block;
@@ -100,22 +103,11 @@
 
       }
 
-      // .navbar-nav .nav-link .link-text {
-
-      //   display: none;
-
-      //   @media only screen and (min-width:$breakpoints) {
-      //     display: block;
-
-      //   }
-
-   
-      // }
 
     }
   
     //has to be out side of logo since the honver has to be at the navrbar:hover not .logo:hover
-    //if if did logo:hover, only when the logo is highlighted, the svg would move
+    //if it did logo:hover, only when the logo is highlighted, the svg would move
     &:hover .logo svg{
 
       //only logo transformation at desktop
@@ -128,7 +120,7 @@
       
   }
   
-    //parameters for the svg/link
+
     .nav-link {
       display: flex;
       align-items: center;
@@ -145,11 +137,7 @@
 
         flex-direction: row;
 
-
-
       }
-
-  
   
       //providing basic dimention to the svg
       svg {
@@ -158,12 +146,18 @@
         
         min-width: 2rem;
         margin: 0 1.5rem;
-        margin-top: 1.25rem;
+        margin-top: 1.25rem;  //adding this because if i remove, not centered in mobile mode
+
+        @media only screen and (min-width:$breakpoints) {
+
+          margin-top: 0; //removing margin at top when desktop, since not needed
+  
+        }
       }
   
       &:hover {
   
-      //changes color of the link and also the backgroup color to creat contrast
+      //changes color of the link and also the backgroup color to create contrast
       color:$text-secondary;
       transition: $nav-transition-speed1;
       background: $bg-secondary;
@@ -171,8 +165,6 @@
   
       }
     }
-  
-    
   
     //link-text will not appear when we do not hover over
     .link-text {
@@ -193,7 +185,7 @@
 
       }
 
-      
+      //logo text will only appear when desktop
       .logo-text {
         @media only screen and (min-width:$breakpoints) { 
           display:block;
@@ -201,16 +193,10 @@
         }
       }
 
-     
-  
       .link-text {
 
         display: block;
         text-align: center;
-        
-        
-        
-        
         
       //will only display text as it expands when hover in the desktop view  
       @media only screen and (min-width:$breakpoints) {
