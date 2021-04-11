@@ -122,7 +122,7 @@
       @media only screen and (min-width:$breakpoints) {
 
         transform: rotate(-180deg);
-        transition: transform($nav-transition-speed);
+        transition: transform($nav-transition-speed1);
 
       }
       
@@ -137,7 +137,7 @@
       color:$text-primary;
       
       text-decoration: none; //setting it so the link does not have a text
-      transition: $nav-transition-speed;
+      transition: $nav-transition-speed1;
       flex-direction: column;
       width: 100%;
 
@@ -165,7 +165,7 @@
   
       //changes color of the link and also the backgroup color to creat contrast
       color:$text-secondary;
-      transition: $nav-transition-speed;
+      transition: $nav-transition-speed1;
       background: $bg-secondary;
   
   
@@ -176,9 +176,11 @@
   
     //link-text will not appear when we do not hover over
     .link-text {
+      
       display: none;
       
       font-family: $nav-bar-font;
+      
     }
   
     //when you hover over, the width will increase and also the 
@@ -203,8 +205,10 @@
   
       .link-text {
 
-        display: inline-block;
+        display: block;
         text-align: center;
+        
+        
         
         
         

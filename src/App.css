@@ -80,7 +80,7 @@
 @media only screen and (min-width: 600px) {
   .navbar:hover .logo svg {
     transform: rotate(-180deg);
-    transition: transform(600ms);
+    transition: transform(100ms);
   }
 }
 .navbar .nav-link {
@@ -89,7 +89,7 @@
   height: 5rem;
   color: #acacac;
   text-decoration: none;
-  transition: 600ms;
+  transition: 100ms;
   flex-direction: column;
   width: 100%;
 }
@@ -106,7 +106,7 @@
 }
 .navbar .nav-link:hover {
   color: white;
-  transition: 600ms;
+  transition: 100ms;
   background: #141418;
 }
 .navbar .link-text {
@@ -124,7 +124,7 @@
   }
 }
 .navbar:hover .link-text {
-  display: inline-block;
+  display: block;
   text-align: center;
 }
 @media only screen and (min-width: 600px) {
