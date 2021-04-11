@@ -10,30 +10,45 @@ export const Navigation = (props: any) => {
 return (
 
     <Navbar className="navbar">
-        <Nav.Link className= "nav-link logo" href="/"> 
+        <ul className="navbar-nav">
+        
+        <li className="logo">
+        <Nav.Link className= "nav-link " href="/"> 
             <FontAwesomeIcon icon={faChevronLeft} size= "2x" />
-            <span className="link-text">Portfolio</span>   
+            <span className="logo-text">Portfolio</span>   
         </Nav.Link>
+        </li>
 
+        <li className="nav-item">
         <Nav.Link className= "nav-link" href="/">
-            <FontAwesomeIcon className="nav-item" icon={faHome} size= "2x" />
+            <FontAwesomeIcon icon={faHome} size= "2x" />
             <span className="link-text">Home</span>
         </Nav.Link>
+        </li>
 
+
+        <li className="nav-item">
         <Nav.Link className= "nav-link" href="/pomodoro">
-            <FontAwesomeIcon className="nav-item" icon={faAppleAlt} size= "2x" />
+            <FontAwesomeIcon  icon={faAppleAlt} size= "2x" />
             <span className="link-text">Pomodoro</span>
         </Nav.Link>
+        </li>
 
+        <li className="nav-item">
         <Nav.Link className= "nav-link" href="/about">
-            <FontAwesomeIcon className="nav-item" icon={faFont} size= "2x" />
+            <FontAwesomeIcon  icon={faFont} size= "2x" />
             <span className="link-text">About</span>
         </Nav.Link>
+        </li>
 
+        <li className="nav-item">
         <Nav.Link className= "nav-link" href="/contact">
-            <FontAwesomeIcon className="nav-item" icon={faAddressCard} size= "2x" />
+            <FontAwesomeIcon  icon={faAddressCard} size= "2x" />
             <span className="link-text">Contact</span>
         </Nav.Link>
+        </li>
+
+        </ul>
 
 
     </Navbar>

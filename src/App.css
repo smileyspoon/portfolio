@@ -1,9 +1,13 @@
 .jumbotron {
   display: flex;
-  margin-left: 5rem;
   height: 5rem;
   background-color: #141418;
   justify-content: center;
+}
+@media only screen and (min-width: 600px) {
+  .jumbotron {
+    margin-left: 5rem;
+  }
 }
 .jumbotron__image {
   height: 80%;
@@ -18,38 +22,66 @@
 }
 
 .navbar {
-  width: 5rem;
-  height: 100vh;
+  bottom: 0;
+  width: 100vw;
+  height: 5rem;
   background-color: #23232e;
   position: fixed;
   transition: width 200ms ease;
+}
+@media only screen and (min-width: 600px) {
+  .navbar {
+    top: 0;
+    width: 5rem;
+    height: 100vh;
+  }
 }
 .navbar-nav {
   margin: 0;
   padding: 0;
   display: flex;
   list-style: none;
-  align-items: center;
+  align-items: left;
+  flex-direction: row;
+}
+@media only screen and (min-width: 600px) {
+  .navbar-nav {
+    flex-direction: column;
+  }
 }
 .navbar .nav-item {
+  display: flex;
+  flex-direction: row;
   width: 100%;
 }
-.navbar .nav-item:last-child {
-  margin-top: auto;
+.navbar .logo .logo-text {
+  display: none;
 }
-.navbar .logo {
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-  text-align: center;
-  background: #141418;
-  letter-spacing: 0.3ch;
-  width: 100%;
-  font-family: "New Tegomin", serif;
+.navbar .logo svg {
+  display: none;
 }
-.navbar:hover .logo svg {
-  transform: rotate(-180deg);
-  transition: transform(600ms);
+@media only screen and (min-width: 600px) {
+  .navbar .logo svg {
+    display: block;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .navbar .logo {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-align: center;
+    background: #141418;
+    letter-spacing: 0.3ch;
+    width: 100%;
+    font-family: "New Tegomin", serif;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .navbar:hover .logo svg {
+    transform: rotate(-180deg);
+    transition: transform(600ms);
+  }
 }
 .navbar .nav-link {
   display: flex;
@@ -58,11 +90,19 @@
   color: #acacac;
   text-decoration: none;
   transition: 600ms;
+  flex-direction: column;
+  width: 100%;
+}
+@media only screen and (min-width: 600px) {
+  .navbar .nav-link {
+    flex-direction: row;
+  }
 }
 .navbar .nav-link svg {
   width: 2rem;
   min-width: 2rem;
   margin: 0 1.5rem;
+  margin-top: 1.25rem;
 }
 .navbar .nav-link:hover {
   color: white;
@@ -71,14 +111,26 @@
 }
 .navbar .link-text {
   display: none;
-  margin-left: 1rem;
   font-family: "New Tegomin", serif;
 }
-.navbar:hover {
-  width: 16rem;
+@media only screen and (min-width: 600px) {
+  .navbar:hover {
+    width: 16rem;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .navbar:hover .logo-text {
+    display: block;
+  }
 }
 .navbar:hover .link-text {
-  display: block;
+  display: inline-block;
+  text-align: center;
+}
+@media only screen and (min-width: 600px) {
+  .navbar:hover .link-text {
+    display: block;
+  }
 }
 
 * {
@@ -107,8 +159,12 @@ body::-webkit-scrollbar-thumb {
 }
 
 .app {
-  margin-left: 5rem;
   padding: 1rem;
+}
+@media only screen and (min-width: 600px) {
+  .app {
+    margin-left: 5rem;
+  }
 }
 
 /*# sourceMappingURL=App.css.map */

@@ -1,10 +1,16 @@
 
 .jumbotron{
     display: flex;
-    margin-left: $default-margin;
+    
     height: 5rem;
     background-color:$bg-secondary;
     justify-content: center;
+
+    @media only screen and (min-width:$breakpoints) {
+
+      margin-left: $default-margin;
+
+    }
   
   
     

@@ -22,7 +22,7 @@ export const Jumbotron = (props: any) => {
 
         const ref = window.location.pathname;
         console.log(ref);
-        debugger;
+
         
         if (ref === '/') {
 

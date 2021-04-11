@@ -1,74 +1,164 @@
 
+@import '../../styles/variables';
+
+@media only screen and (min-width:$breakpoints) {
+
+
+
+}
+
 .navbar{
+
+
   
-    width: $default-margin;
-    height: 100vh; //100% vertical height
+    bottom: 0;
+    width: 100vw;
+    height: 5rem;
+
     background-color: $bg-primary;
     position: fixed;
     transition: width 200ms ease;  //this is the slow navbar animation instead of instant
   
+    //will move nav bar to left vertical when desktop
+    @media only screen and (min-width:$breakpoints) {
+
+      top:0;
+      width: $default-margin;
+      height: 100vh; //100% vertical height
+  
+    }
   
     &-nav {
   
+    //move to media query
     margin:0;
     padding:0;
   
     display: flex;
-    list-style: none;
+    list-style: none;   
+    align-items: left;
+    flex-direction: row;
+
+    //transition between column icons vs row icons during desktop/mobile
+    @media only screen and (min-width:$breakpoints) {
+
+      flex-direction: column;
+      
+    }
     
-    align-items: center;
     
     }
   
     .nav-item {
-      width:100%
+      display: flex;
+      flex-direction: row;
+      width:100%;
+
+      
     }
   
     .nav-item:last-child{
-      margin-top:auto;
+      // margin-top:auto;
     }
   
      .logo {
-      font-weight: bold;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-      text-align: center;
-      background: $bg-secondary;
-      letter-spacing: 0.3ch;
-      width: 100%;
-      font-family: $nav-bar-title-font;
-  
-  
+
+      .logo-text{
+
+        display: none;
+
+        
+      }
+
+      
+      //when desktop, will show logo, but not when mobile
+      svg {
+
+        display:none;
+
+        @media only screen and (min-width:$breakpoints) { 
+          display:block;
+
+        }
+
+      }
+
+
+      //logo text only needs to appear during desktop
+      @media only screen and (min-width:$breakpoints) {
+
+        
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        text-align: center;
+        background: $bg-secondary;
+        letter-spacing: 0.3ch;
+        width: 100%;
+        font-family: $nav-bar-title-font;
+
+
+      }
+
+      // .navbar-nav .nav-link .link-text {
+
+      //   display: none;
+
+      //   @media only screen and (min-width:$breakpoints) {
+      //     display: block;
+
+      //   }
+
+   
+      // }
+
     }
   
     //has to be out side of logo since the honver has to be at the navrbar:hover not .logo:hover
     //if if did logo:hover, only when the logo is highlighted, the svg would move
     &:hover .logo svg{
-    
-      transform: rotate(-180deg);
-      transition: transform($nav-transition-speed);
-    
+
+      //only logo transformation at desktop
+      @media only screen and (min-width:$breakpoints) {
+
+        transform: rotate(-180deg);
+        transition: transform($nav-transition-speed);
+
+      }
+      
   }
   
     //parameters for the svg/link
     .nav-link {
       display: flex;
       align-items: center;
+      
       height:$default-margin; //this is set the height as same as the overall margin
       color:$text-primary;
       
       text-decoration: none; //setting it so the link does not have a text
       transition: $nav-transition-speed;
-  
+      flex-direction: column;
+      width: 100%;
+
+      @media only screen and (min-width:$breakpoints) {
+
+        flex-direction: row;
+
+
+
+      }
+
   
   
       //providing basic dimention to the svg
       svg {
         width: 2rem; //giving it a basic dimention will make the icon not move around, as you hover
   
-  
+        
         min-width: 2rem;
         margin: 0 1.5rem;
+        margin-top: 1.25rem;
       }
   
       &:hover {
@@ -87,17 +177,43 @@
     //link-text will not appear when we do not hover over
     .link-text {
       display: none;
-      margin-left:1rem;
+      
       font-family: $nav-bar-font;
     }
   
     //when you hover over, the width will increase and also the 
     //text will appear
     &:hover{
-      width: 16rem;
+
+      //will only expand screen on hover when desktop
+      @media only screen and (min-width:$breakpoints) {
+        width: 16rem;
+
+      }
+
+      
+      .logo-text {
+        @media only screen and (min-width:$breakpoints) { 
+          display:block;
+
+        }
+      }
+
+     
   
       .link-text {
+
+        display: inline-block;
+        text-align: center;
+        
+        
+        
+      //will only display text as it expands when hover in the desktop view  
+      @media only screen and (min-width:$breakpoints) {
+
         display: block;
+      }
+        
       }
     }
   

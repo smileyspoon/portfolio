@@ -2,6 +2,11 @@
 @import './styles/Jumbotron/Jumbotron.scss';
 @import './styles//Navigation/Navigation.scss';
 
+@media only screen and (min-width:$breakpoints) {
+
+
+
+}
 
 * {
     
@@ -44,10 +49,19 @@ body {
 }
 
 .app {
-  margin-left: $default-margin;
+  
   padding: 1rem;
 
+  @media only screen and (min-width:$breakpoints) {
+    margin-left: $default-margin;
+
+
+
+  }
+  
+
 }
+
 
 
 
