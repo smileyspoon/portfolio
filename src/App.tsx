@@ -1,16 +1,15 @@
 
 //react related imports
 import React from 'react';
-import { render } from "react-dom";
-import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 
 //other imports
-import { auth, database, getCurrentUser, createUserProfileDocument, signOut } from './firebase';
+// import { auth, database, getCurrentUser, createUserProfileDocument, signOut } from './firebase';
 import _ from 'lodash';
 
 //component imports
-import firebase from 'firebase/app';
+// import firebase from 'firebase/app';
 import './App.css';
 import { Navigation } from './components/Navigation/Navbar';
 import { Home } from './components/Main/Home';
@@ -41,7 +40,18 @@ const App = (props: any) => {
         <Router>
           <Switch>
             <Route exact path ="/" component={Home} />
-            <Route exact path ="/pomodoro" component={Pomodoro} />
+            <Route 
+              exact path ="/pomodoro" 
+              render={() => 
+                (
+                  <Pomodoro
+                  //will need to update user in to an actual thing later
+                  //sending true for now so the page will actually load
+                      user={true}
+                  />
+                )}
+            />
+
             <Route exact path = "/about" component={About}/>
             <Route exact path = "/contact" component={Contact} />
 

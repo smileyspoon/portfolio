@@ -1,10 +1,5 @@
-
-import { debug } from 'node:console';
-import React, {useState, useEffect, useCallback} from 'react';
-import { Jumbotron as Jumbo, Row, Col, Form, Button, InputGroup, Card, Image, Carousel, Container } from "react-bootstrap";
-import {useLocation} from 'react-router-dom';
-// import styled from 'styled-components';
-import mainImage from '../../assets/pomodoro.jpg'
+import React, {useState, useEffect} from 'react';
+import { Jumbotron as Jumbo,  } from "react-bootstrap";
 
 
 export const Jumbotron = (props: any) => {
@@ -21,7 +16,7 @@ export const Jumbotron = (props: any) => {
     const title = () => {
 
         const ref = window.location.pathname;
-        console.log(ref);
+
 
         
         if (ref === '/') {

@@ -1,6 +1,6 @@
-import React, {useState, useEffect, useCallback} from 'react';
-import { LinkContainer } from 'react-router-bootstrap';
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import React from 'react';
+
+import { Navbar, Nav} from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faChevronLeft ,faHome, faAppleAlt, faFont,faAddressCard } from '@fortawesome/free-solid-svg-icons';
 
