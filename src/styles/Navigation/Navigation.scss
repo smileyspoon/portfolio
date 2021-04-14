@@ -169,15 +169,22 @@
     //link-text will not appear when we do not hover over
     .link-text {
       
-      display: none;
-      
       font-family: $nav-bar-font;
+      display: block;
+      text-align: center;
+      
+
+      @media only screen and (min-width:$breakpoints) {
+        display: none;
+
+      }
       
     }
   
     //when you hover over, the width will increase and also the 
     //text will appear
     &:hover{
+      
 
       //will only expand screen on hover when desktop
       @media only screen and (min-width:$breakpoints) {

@@ -115,8 +115,14 @@
   background: #141418;
 }
 .navbar .link-text {
-  display: none;
   font-family: "New Tegomin", serif;
+  display: block;
+  text-align: center;
+}
+@media only screen and (min-width: 600px) {
+  .navbar .link-text {
+    display: none;
+  }
 }
 @media only screen and (min-width: 600px) {
   .navbar:hover {
