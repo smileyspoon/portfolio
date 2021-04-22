@@ -6,23 +6,18 @@ import { Time } from './Time';
 import { Loading } from '../Loading/Loading';
 
 export const TimerReact = (props: any)=> {
-    const {time} = props;
 
+    const {time, timerName} = props;
 
-
-    const timer = new Timer ({interval: 1000});
-    const timerObject = {timerName: "", timer: timer, timerNum: 0};
-
-    
-  
     const [isLoading, setIsLoading] = useState(true);
-
-    const [timerName, setTimerName] = useState("");
+    
+    const [newTimer, setNewTimer] = useState(Object);
+    const [newTimerName, setTimerName] = useState("");
     const [timerDisplay, setTimerDisplay] = useState(0);
-    const [newTimer, setNewTimer] =useState(timer);
+    
+    
+    
 
-
-  
     const start=(timer: Timer, time: Time) => {
       
       timer.start(time.convertToSeconds());
@@ -33,6 +28,7 @@ export const TimerReact = (props: any)=> {
       timer.pause();
     
     }
+
     const stop = (timer: Timer) => {
       timer.stop();
     }
@@ -45,18 +41,17 @@ export const TimerReact = (props: any)=> {
   
       
       const timer = new Timer ({interval: 1000});
-      setNewTimer(timer);
-      setTimerName(timerName);
-
-      
       timer.on('done', () => console.log('done!'))
       timer.on('statusChanged', (status) => console.log('status:', status))
       timer.on('tick', (ms) =>  setTimerDisplay( Math.round(ms/1000)));
 
-      
+      return timer;
 
     }
-  
+
+    debugger;
+    
+    
   
     useEffect(()=>{
   
@@ -64,9 +59,8 @@ export const TimerReact = (props: any)=> {
       if (time) {
   
         setIsLoading(false);
-  
-      
-  
+        setTimerName(timerName);
+        
       }
   
   
@@ -91,33 +85,30 @@ export const TimerReact = (props: any)=> {
       :
   
       (
-        <Card>
+        <Card className ="pomodoro_timer_react">
+          <div className = "timer_name">{newTimerName}</div>
   
-          <span>{timerDisplay}</span>
+          <div className = "timer_display">{timerDisplay}</div>
   
-          <Button onClick= {()=> {
+          <Button className = "button" onClick= {()=> {
   
-            createNewTimer("New Timer");
-            
-            
-            start(newTimer, time);
-            
-  
+            setNewTimer(createNewTimer("New Timer"));
+
           }}
           
           
           >New Clock</Button>
 
         
-        <Button onClick= {()=> {start(newTimer, time);}}>Start</Button>
+        <Button className = "button" onClick= {()=> {start(newTimer, time);}}>Start</Button>
 
-        <Button onClick= {()=> {stop(newTimer);}}>Stop</Button>
+        <Button className = "button" onClick= {()=> {stop(newTimer);}}>Stop</Button>
   
-        <Button onClick= {()=> {pause(newTimer);}}>Pause</Button>
+        <Button className = "button" onClick= {()=> {pause(newTimer);}}>Pause</Button>
   
-        <Button onClick= {()=> {resume(newTimer);}}>Resume</Button>
+        <Button className = "button" onClick= {()=> {resume(newTimer);}}>Resume</Button>
   
-        <Button onClick = {()=> {console.log(newTimer)}}>Console Log </Button>
+        <Button className = "button" onClick = {()=> {console.log(newTimer)}}>Console Log </Button>
   
   
         </Card>

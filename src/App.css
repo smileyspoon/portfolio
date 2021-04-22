@@ -144,6 +144,26 @@
   }
 }
 
+.pomodoro_timer_react {
+  display: flex;
+}
+.pomodoro_timer_react .button {
+  background-color: #4CAF50;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.pomodoro_timer_react .timer_display {
+  width: 10%;
+  text-align: center;
+  padding-top: 8px;
+}
+
 * {
   box-sizing: border-box;
 }

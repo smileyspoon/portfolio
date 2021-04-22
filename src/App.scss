@@ -1,6 +1,8 @@
 @import './styles/variables';
 @import './styles/Jumbotron/Jumbotron.scss';
 @import './styles//Navigation/Navigation.scss';
+@import './styles/Pomodoro/Pomodoro.scss';
+@import './styles/Pomodoro/TimerReact.scss';
 
 @media only screen and (min-width:$breakpoints) {
 

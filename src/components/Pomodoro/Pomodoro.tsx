@@ -51,10 +51,11 @@ export const Pomodoro = (props: any) => {
     :
 
     (
-      <div className="app">
+      <div className="app pomodoro">
 
-      <TimerReact time={time} />
-      <TimerReact time={time2} />
+      <TimerReact time={time} timerName = {"Timer One"}/>
+      <br></br>
+      <TimerReact time={time2} timerName = {"Timer Two"}/>
       </div>
 
       
