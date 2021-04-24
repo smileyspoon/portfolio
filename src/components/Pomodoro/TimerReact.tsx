@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Form, FormControl } from 'react-bootstrap';
 import Timer from 'tiny-timer';
 
 import { Time } from './Time';
@@ -43,6 +43,8 @@ export const TimerReact = (props: any)=> {
       const timer = new Timer ({interval: 1000});
       timer.on('done', () => console.log('done!'))
       timer.on('statusChanged', (status) => console.log('status:', status))
+
+      //need function that converts to h m s
       timer.on('tick', (ms) =>  setTimerDisplay( Math.round(ms/1000)));
 
       return timer;
@@ -89,6 +91,69 @@ export const TimerReact = (props: any)=> {
           <div className = "timer_name">{newTimerName}</div>
   
           <div className = "timer_display">{timerDisplay}</div>
+
+            <label>
+              Hour:
+              <input
+                type="type"
+                
+                defaultValue = {time.getH()}
+                
+                value= {timerDisplay}
+                
+                onClick ={ ()=>{
+                  pause(newTimer);
+                }}
+
+                onChange ={()=>{
+                  
+                }}
+
+
+              />
+            </label>
+
+            <label>
+              Minute:
+              <input
+                type="type"
+                
+                defaultValue = {time.getM()}
+                
+                value= {timerDisplay}
+                
+                onClick ={ ()=>{
+                  pause(newTimer);
+                }}
+
+                onChange ={()=>{
+                  
+                }}
+
+
+              />
+            </label>
+
+            <label>
+              Seconds:
+              <input
+                type="type"
+                
+                defaultValue = {time.getS()}
+                
+                value= {timerDisplay}
+                
+                onClick ={ ()=>{
+                  pause(newTimer);
+                }}
+
+                onChange ={()=>{
+                  
+                }}
+
+
+              />
+            </label>
   
           <Button className = "button" onClick= {()=> {
   
