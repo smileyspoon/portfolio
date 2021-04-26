@@ -47,7 +47,7 @@ const App = (props: any) => {
                   <Pomodoro
                   //will need to update user in to an actual thing later
                   //sending true for now so the page will actually load
-                      user={true}
+                      pomodoro={true}
                   />
                 )}
             />

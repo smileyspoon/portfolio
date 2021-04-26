@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, Button, Form, FormControl } from 'react-bootstrap';
 import Timer from 'tiny-timer';
+import _ from 'lodash';
 
 import { Time } from './Time';
 import { Loading } from '../Loading/Loading';
@@ -8,17 +9,41 @@ import { Loading } from '../Loading/Loading';
 export const TimerReact = (props: any)=> {
 
     const {time, timerName} = props;
+  
+
 
     const [isLoading, setIsLoading] = useState(true);
-    
-    const [newTimer, setNewTimer] = useState(Object);
+
+
+    const createNewTimer = () => {
+  
+      
+      const timer = new Timer ({interval: 1000});
+      timer.on('done', () => {console.log('done!'); setStart(true); setPause(false); setResume(false)});
+      timer.on('statusChanged', (status) => {console.log('status:', status); if (status ==='running') {
+        setStart(false);
+        setPause(true);
+
+      }});
+
+      //need function that converts to h m s
+      timer.on('tick', (ms) =>  setTimerDisplay( Math.round(ms/1000)));
+
+      return timer;
+
+    }
+
+    const [newTimer, setNewTimer] = useState(createNewTimer());
     const [newTimerName, setTimerName] = useState("");
     const [timerDisplay, setTimerDisplay] = useState(0);
+    const [showStart, setStart] = useState(true);
+    const [showPause, setPause] =useState(false);
+    const [showResume, setResume] = useState(false);
     
     
     
-
     const start=(timer: Timer, time: Time) => {
+      
       
       timer.start(time.convertToSeconds());
       
@@ -36,23 +61,11 @@ export const TimerReact = (props: any)=> {
     const resume = (timer: Timer) => {
       timer.resume();
     }
-  
-    const createNewTimer = (timerName: string) => {
-  
-      
-      const timer = new Timer ({interval: 1000});
-      timer.on('done', () => console.log('done!'))
-      timer.on('statusChanged', (status) => console.log('status:', status))
 
-      //need function that converts to h m s
-      timer.on('tick', (ms) =>  setTimerDisplay( Math.round(ms/1000)));
 
-      return timer;
 
-    }
 
-    debugger;
-    
+
     
   
     useEffect(()=>{
@@ -61,7 +74,12 @@ export const TimerReact = (props: any)=> {
       if (time) {
   
         setIsLoading(false);
+        
         setTimerName(timerName);
+        
+        
+        
+        
         
       }
   
@@ -80,6 +98,8 @@ export const TimerReact = (props: any)=> {
 
         
       (isLoading) ?
+
+      
   
   
       <Loading />
@@ -87,10 +107,14 @@ export const TimerReact = (props: any)=> {
       :
   
       (
-        <Card className ="pomodoro_timer_react">
+        
+
+        <Card className ="pomodoro_timer_react">        
+          
+        
           <div className = "timer_name">{newTimerName}</div>
   
-          <div className = "timer_display">{timerDisplay}</div>
+          {/* <div className = "timer_display">{timerDisplay}</div> */}
 
             <label>
               Hour:
@@ -154,26 +178,94 @@ export const TimerReact = (props: any)=> {
 
               />
             </label>
-  
+        
+        
+          {/* RESET */}
           <Button className = "button" onClick= {()=> {
-  
-            setNewTimer(createNewTimer("New Timer"));
+
+            
+            console.log(newTimer instanceof Timer);
+
+            if (newTimer instanceof Timer) {
+
+
+              stop(newTimer); 
+
+            }
+            const temp = createNewTimer()
+
+            setNewTimer(temp);
+            setStart(true);
+            setResume(false);
+            setPause(false);
+            
+          
+          
+          }}>Reset</Button>
+
+        {
+
+          //START
+          showStart ?
+          <Button className = "button" onClick= {()=> {
+
+            
+            console.log(newTimer);
+
+            if (!(newTimer instanceof Timer)) {
+              const temp = createNewTimer()
+
+              setNewTimer(temp);
+              
+            }
+            else {
+              
+              stop(newTimer); 
+              start(newTimer, time); 
+            }
+            console.log(newTimer);
+            
 
           }}
-          
-          
-          >New Clock</Button>
+  
+          >Start</Button>
+
+          :
+
+        <div></div>
+        }
+        
+        
+        {
+          showPause ?
+          <Button className = "button" onClick= {()=> {pause(newTimer); setPause(false); setResume(true); }}>Pause</Button>
+
+          :
+          <div></div>
+
+        }
+        
+
+        {
+
+          showResume ?
+          <Button className = "button" onClick= {()=> {resume(newTimer); setResume(false); setPause(true); }}>Resume</Button>
+
+          :
+          <div></div>
+
+        }
+  
+        
+
+          <Button className = "button" onClick = {()=> {console.log(newTimer)}}>Console Log </Button>
+
+
 
         
-        <Button className = "button" onClick= {()=> {start(newTimer, time);}}>Start</Button>
 
-        <Button className = "button" onClick= {()=> {stop(newTimer);}}>Stop</Button>
   
-        <Button className = "button" onClick= {()=> {pause(newTimer);}}>Pause</Button>
-  
-        <Button className = "button" onClick= {()=> {resume(newTimer);}}>Resume</Button>
-  
-        <Button className = "button" onClick = {()=> {console.log(newTimer)}}>Console Log </Button>
+        
   
   
         </Card>
