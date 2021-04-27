@@ -55,13 +55,11 @@ export class Time {
 
         const h = Math.round(this.ms/3600000);
         const m = Math.round((this.ms%3600000)/60000);
-        const s = (this.ms - (h*3600000) - (m*60000))/1000;
+        const s = Math.round((this.ms - (h*3600000) - (m*60000))/1000);
 
 
         return {h:h, m: m, s: s};
         
     }
-
-
 
 }
