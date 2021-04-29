@@ -58,6 +58,7 @@ export const TimerReact = (props: any) => {
 
   //I starts off with an new timer class instance.  I tried putting in Object and it does work, but not cleanly
   //will always operate on the Object first, so better to pass in an actuall timer
+  const [newTime, setNewTime] =useState(time);
   const [newTimer, setNewTimer] = useState(createNewTimer());
   const [newTimerName, setTimerName] = useState("");
   // const [timerDisplay, setTimerDisplay] = useState(0);
@@ -68,9 +69,9 @@ export const TimerReact = (props: any) => {
   const [showResume, setResume] = useState(false);
 
   //controls timer display input boxes
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
+  const [hours, setHours] = useState(newTime.getH());
+  const [minutes, setMinutes] = useState(newTime.getM());
+  const [seconds, setSeconds] = useState(newTime.getS());
 
 
 
@@ -96,9 +97,52 @@ export const TimerReact = (props: any) => {
   }
 
 
+  const timeOnChange= (type: string, t: number) => {
+
+    setPause(false);
+    setResume(false);
+    setStart(true);
+
+
+    if (type ==='hour') {
+
+      setHours(t);
+
+    }
+
+    else if (type ==='minute') {
+
+      setMinutes(t);
+
+    }
+
+    else if (type === 'second') {
+
+      
+ 
+      setSeconds(t);
+
+    }
+
+    else  {
+
+      console.log('invalid timeOnClick type');
+
+    }
+
+    const tempTime = new Time(hours, minutes, seconds);
+
+    const tempTimer = createNewTimer();
+
+
+    console.log(tempTime);
+    return {tempTimer, tempTime};
+    
 
 
 
+
+  }
 
 
   useEffect(() => {
@@ -156,8 +200,12 @@ export const TimerReact = (props: any) => {
                 pause(newTimer);
               }}
 
-              onChange={() => {
+              onChange={(e: any) => {
 
+                const {tempTimer, tempTime} = timeOnChange('hour', e.target.value);
+
+                setNewTime(tempTime);
+                
               }}
 
 
@@ -175,7 +223,9 @@ export const TimerReact = (props: any) => {
                 pause(newTimer);
               }}
 
-              onChange={() => {
+              onChange={(e: any) => {
+                const {tempTimer, tempTime} =timeOnChange('minute', e.target.value);
+                setNewTime(tempTime);
 
               }}
 
@@ -194,8 +244,11 @@ export const TimerReact = (props: any) => {
                 pause(newTimer);
               }}
 
-              onChange={() => {
+              onChange={(e:any) => {
 
+                const {tempTimer, tempTime} = timeOnChange('second', e.target.value);
+                
+                setNewTime(tempTime);
               }}
 
 
@@ -247,7 +300,7 @@ export const TimerReact = (props: any) => {
                 else {
 
                   stop(newTimer);
-                  start(newTimer, time);
+                  start(newTimer, newTime);
                 }
 
 
