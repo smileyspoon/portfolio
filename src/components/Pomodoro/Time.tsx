@@ -37,7 +37,9 @@ export class Time {
 
     getAll =  () => {
 
-        return {h:this.h, m: this.m, s: this.s};
+        // return {h:this.h, m: this.m, s: this.s};
+
+        return [{type: 'hour', t:this.h},{type: 'minute', t:this.m},{type: 'second', t:this.s}];
 
     }
 

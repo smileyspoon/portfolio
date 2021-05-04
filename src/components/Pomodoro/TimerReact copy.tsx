@@ -5,8 +5,6 @@ import _ from 'lodash';
 
 import { Time } from './Time';
 import { Loading } from '../Loading/Loading';
-import useTimeINput from './useTimeInput';
-import useTimeInput from "./useTimeInput";
 
 export const TimerReact = (props: any) => {
 
@@ -15,7 +13,6 @@ export const TimerReact = (props: any) => {
 
 
   const [isLoading, setIsLoading] = useState(true);
-  
 
 
   //have this just before newTimer so I can use it in it's useState
@@ -49,15 +46,36 @@ export const TimerReact = (props: any) => {
       const tempTime = new Time(0,0,0, ms);
       const {h, m, s} = tempTime.convertToHMS();
 
-      setNewHour({type: 'hour', t:h});
-      setNewMinute({type: 'minute', t:m});
-      setNewSecond({type: 'second', t:s});
+      setHours(h);
+      setMinutes(m);
+      setSeconds(s);
 
     });
 
     return timer;
 
   }
+
+  //I starts off with an new timer class instance.  I tried putting in Object and it does work, but not cleanly
+  //will always operate on the Object first, so better to pass in an actuall timer
+  const [newTime, setNewTime] =useState(time);
+  const [newTimer, setNewTimer] = useState(createNewTimer());
+  const [newTimerName, setTimerName] = useState("");
+  // const [timerDisplay, setTimerDisplay] = useState(0);
+
+  //controls showing of buttons
+  const [showStart, setStart] = useState(true);
+  const [showPause, setPause] = useState(false);
+  const [showResume, setResume] = useState(false);
+
+  //controls timer display input boxes
+  const [hours, setHours] = useState(newTime.getH());
+  const [minutes, setMinutes] = useState(newTime.getM());
+  const [seconds, setSeconds] = useState(newTime.getS());
+
+
+
+
 
   const start = (timer: Timer, time: Time) => {
 
@@ -79,28 +97,46 @@ export const TimerReact = (props: any) => {
     timer.resume();
   }
 
-  //I starts off with an new timer class instance.  I tried putting in Object and it does work, but not cleanly
-  //will always operate on the Object first, so better to pass in an actuall timer
-  const [newTime, setNewTime] =useState(time);
-  const [newTimer, setNewTimer] = useState(createNewTimer());
-  const [newTimerName, setTimerName] = useState("");
-  const [newHour, HourTimeInput, setNewHour] = useTimeInput(newTime.getAll()[0], newTimer, pause);
-  const [newMinute, MinuteTimeInput, setNewMinute] = useTimeInput(newTime.getAll()[1], newTimer, pause);
-  const [newSecond, SecondTimeInput, setNewSecond] = useTimeInput(newTime.getAll()[2], newTimer, pause);
-  // const [timerDisplay, setTimerDisplay] = useState(0);
 
-  //controls showing of buttons
-  const [showStart, setStart] = useState(true);
-  const [showPause, setPause] = useState(false);
-  const [showResume, setResume] = useState(false);
+  // const timeOnChange= (type: string, t: number) => {
 
-  //controls timer display input boxes
-  const [hours, setHours] = useState(newTime.getH());
-  const [minutes, setMinutes] = useState(newTime.getM());
-  const [seconds, setSeconds] = useState(newTime.getS());
+  //   setPause(false);
+  //   setResume(false);
+  //   setStart(true);
 
-  
+  //   if (type ==='hour') {
 
+  //     setHours(t);
+
+  //   }
+
+  //   else if (type ==='minute') {
+
+  //     setMinutes(t);
+
+  //   }
+
+  //   else if (type === 'second') {
+
+  //     setSeconds(t);
+
+  //   }
+
+  //   else  {
+
+  //     console.log('invalid timeOnClick type');
+
+  //   }
+
+  //   const tempTime = new Time(hours, minutes, seconds);
+
+  //   const tempTimer = createNewTimer();
+
+
+  //   console.log(tempTime);
+  //   return {tempTimer, tempTime};
+    
+  // }
 
   const timeOnChange= (type: string, t: number) => {
 
@@ -149,8 +185,6 @@ export const TimerReact = (props: any) => {
 
       setTimerName(timerName);
 
-      
-
     }
 
 
@@ -186,11 +220,71 @@ export const TimerReact = (props: any) => {
 
 
 
-        <HourTimeInput />
+          <label>
+            Hour:
+              <input
+              type="type"
 
-        <MinuteTimeInput />
-        
-        <SecondTimeInput />
+              value={hours}
+
+              onClick={() => {
+                pause(newTimer);
+              }}
+
+              onChange={(e: any) => {
+
+                const {tempTime} = timeOnChange('hour', e.target.value);
+
+                setNewTime(tempTime);
+                
+              }}
+
+
+            />
+          </label>
+
+          <label>
+            Minute:
+              <input
+              type="type"
+
+              value={minutes}
+
+              onClick={() => {
+                pause(newTimer);
+              }}
+
+              onChange={(e: any) => {
+                const {tempTime} =timeOnChange('minute', e.target.value);
+                setNewTime(tempTime);
+
+              }}
+
+
+            />
+          </label>
+
+          <label>
+            Seconds:
+              <input
+              type="type"
+
+              value={seconds}
+
+              onClick={() => {
+                pause(newTimer);
+              }}
+
+              onChange={(e:any) => {
+
+                const {tempTime} = timeOnChange('second', e.target.value);
+                
+                setNewTime(tempTime);
+              }}
+
+
+            />
+          </label>
 
 
           {/* RESET */}
