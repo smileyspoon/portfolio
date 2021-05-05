@@ -94,6 +94,10 @@ export const TimerReact = (props: any) => {
   const [showStart, setStart] = useState(true);
   const [showPause, setPause] = useState(false);
   const [showResume, setResume] = useState(false);
+  const [showEdit, setEdit] =useState(true);
+  const [showSave, setSave] =useState(false);
+  const [showCancel, setCancel] =useState(false);
+
 
   //only being used in timeOnChange
   //controls timer display input boxes
@@ -272,8 +276,68 @@ export const TimerReact = (props: any) => {
 
           }
 
+          {
+
+          showEdit ?
+            <Button className="button" onClick={() => {
+              setEdit(false);
+              setSave(true);
+              setCancel(true);
+
+            }}>Edit</Button>
+
+            :
+
+            <div></div>
+
+          }
+
+          {
+
+          showSave ?
+            <Button className="button" onClick={() => {
+              setResume(false);
+              setStart(true);
+              setSave(false);
+              setCancel(false);
+              setEdit(true);
+
+
+              const asdf = parseInt(newHour,10);
+              
+
+              const tempTime = new Time(parseInt(newHour.t,10), parseInt(newMinute.t,10), parseInt(newSecond.t,10));
+              
+              setNewTime(tempTime);
+
+            }}>Save</Button>
+
+            :
+
+            <div></div>
+
+          }
+
+
+          {
+
+          showCancel ?
+            <Button className="button" onClick={() => {
+              setCancel(false);
+              setSave(false);
+              setEdit(true);
+
+            }}>Cancel</Button>
+
+            :
+
+            <div></div>
+
+          }
+          
+
           {/* console log printout for debug */}
-          {/* <Button className="button" onClick={() => { console.log(newTimer) }}>Console Log </Button> */}
+          <Button className="button" onClick={() => { console.log(newTimer); console.log(newTime)  }}>Console Log </Button>
 
         </Card>
       )

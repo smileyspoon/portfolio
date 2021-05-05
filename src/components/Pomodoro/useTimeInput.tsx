@@ -59,8 +59,9 @@ const useTimeInput = (item: any, timer: any, pause: any, key: any) => {
 
 
         onClick={() => {
-            pause(timer);
             setChangeIndicator(true);
+            pause(timer);
+            
         }}
 
         onBlur={()=>{
@@ -68,8 +69,20 @@ const useTimeInput = (item: any, timer: any, pause: any, key: any) => {
             setChangeIndicator(false);
 
         }}
+        // onMouseMove={()=>{
+        //     setChangeIndicator(true);
 
-        
+        // }}
+
+        // onMouseLeave={()=>{
+        //     setChangeIndicator(false);
+
+        // }}
+
+        // onTouchMoveCapture={()=>{
+
+        //     setChangeIndicator(true);
+        // }}
 
         onChange={(e: any) => {
 
