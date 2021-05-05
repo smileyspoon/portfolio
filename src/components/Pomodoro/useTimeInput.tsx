@@ -55,11 +55,21 @@ const useTimeInput = (item: any, timer: any, pause: any, key: any) => {
         key={`${item.type}-${key}`}
 
         value={newItem.t}
-        autoFocus={true}
+        autoFocus={changeIndicator}
+
 
         onClick={() => {
             pause(timer);
+            setChangeIndicator(true);
         }}
+
+        onBlur={()=>{
+
+            setChangeIndicator(false);
+
+        }}
+
+        
 
         onChange={(e: any) => {
 
