@@ -1,15 +1,16 @@
-import React, {useState, useEffect, useCallback} from 'react';
-import { Row, Col, Form, Button, InputGroup, Card, Image, Carousel, Container } from "react-bootstrap";
+import React, {useState, useEffect} from 'react';
+// import { Row, Col, Form, Button, InputGroup, Card, Image, Carousel, Container } from "react-bootstrap";
 
 
 import {Loading} from '../Loading/Loading';
 
 
 
-const useTimeInput = (item: any, timer: any, pause: any) => {
+const useTimeInput = (item: any, timer: any, pause: any, key: any) => {
 
     const [isLoading, setIsLoading] = useState(true);
     const [newItem, setItem] =useState(item);
+    const [changeIndicator, setChangeIndicator] =useState(false);
 
 
     
@@ -50,9 +51,11 @@ const useTimeInput = (item: any, timer: any, pause: any) => {
         <label>
         {item.type}:
         <input
-        type="type"
+        type="number"
+        key={`${item.type}-${key}`}
 
         value={newItem.t}
+        autoFocus={true}
 
         onClick={() => {
             pause(timer);
@@ -60,9 +63,13 @@ const useTimeInput = (item: any, timer: any, pause: any) => {
 
         onChange={(e: any) => {
 
-            newItem.t=e.target.value;
+            item.t=e.target.value;
 
-            setItem(newItem);    
+            setItem(item);    
+
+            //need to have some back and forth with this
+            setChangeIndicator(true);
+            console.log(item);
             
         }}
 

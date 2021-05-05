@@ -35,11 +35,14 @@ export const Pomodoro = (props: any) => {
   const [newPomodoro, setNewPomodoro] = useState(pomodoro);
 
 
-
+//using useCallback so this only happens when something happens newPomodoro but
+//never any other time when website rerenders
   const addNewTime = useCallback(()=>{
 
       const newTime = new Time (0,0,0);
 
+      //setting up new array and putting all items into tempPomo from newPromodoro so 
+      //react knows something new happened
       const tempPomo = [...newPomodoro];
 
 
@@ -53,7 +56,7 @@ export const Pomodoro = (props: any) => {
 
       return tempPomo;
   
-      
+  
   },[newPomodoro]);
   
 
@@ -70,8 +73,6 @@ export const Pomodoro = (props: any) => {
 
       setIsLoading(false);
       
-      
-
     }
 
 
@@ -117,7 +118,6 @@ export const Pomodoro = (props: any) => {
               // console.log(pomodoro);
               // console.log(newPomodoro);
               
-
             }
           }
         >

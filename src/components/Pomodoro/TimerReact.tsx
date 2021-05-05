@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { Card, Button, Form, FormControl } from 'react-bootstrap';
+import React, { useState, useEffect } from "react";
+import { Card, Button } from 'react-bootstrap';
 import Timer from 'tiny-timer';
 import _ from 'lodash';
 
 import { Time } from './Time';
 import { Loading } from '../Loading/Loading';
-import useTimeINput from './useTimeInput';
 import useTimeInput from "./useTimeInput";
 
 export const TimerReact = (props: any) => {
 
-  const { time, timerName } = props;
+  const { time, timerName, key } = props;
 
 
 
@@ -84,9 +83,11 @@ export const TimerReact = (props: any) => {
   const [newTime, setNewTime] =useState(time);
   const [newTimer, setNewTimer] = useState(createNewTimer());
   const [newTimerName, setTimerName] = useState("");
-  const [newHour, HourTimeInput, setNewHour] = useTimeInput(newTime.getAll()[0], newTimer, pause);
-  const [newMinute, MinuteTimeInput, setNewMinute] = useTimeInput(newTime.getAll()[1], newTimer, pause);
-  const [newSecond, SecondTimeInput, setNewSecond] = useTimeInput(newTime.getAll()[2], newTimer, pause);
+
+
+  const [newHour, HourTimeInput, setNewHour] = useTimeInput(newTime.getAll()[0], newTimer, pause, key);
+  const [newMinute, MinuteTimeInput, setNewMinute] = useTimeInput(newTime.getAll()[1], newTimer, pause, key);
+  const [newSecond, SecondTimeInput, setNewSecond] = useTimeInput(newTime.getAll()[2], newTimer, pause, key);
   // const [timerDisplay, setTimerDisplay] = useState(0);
 
   //controls showing of buttons
@@ -94,50 +95,51 @@ export const TimerReact = (props: any) => {
   const [showPause, setPause] = useState(false);
   const [showResume, setResume] = useState(false);
 
+  //only being used in timeOnChange
   //controls timer display input boxes
-  const [hours, setHours] = useState(newTime.getH());
-  const [minutes, setMinutes] = useState(newTime.getM());
-  const [seconds, setSeconds] = useState(newTime.getS());
+  // const [hours, setHours] = useState(newTime.getH());
+  // const [minutes, setMinutes] = useState(newTime.getM());
+  // const [seconds, setSeconds] = useState(newTime.getS());
 
   
 
 
-  const timeOnChange= (type: string, t: number) => {
+  // const timeOnChange= (type: string, t: number) => {
 
-    setPause(false);
-    setResume(false);
-    setStart(true);
+  //   setPause(false);
+  //   setResume(false);
+  //   setStart(true);
 
-    if (type ==='hour') {
+  //   if (type ==='hour') {
 
-      setHours(t);
+  //     setHours(t);
 
-    }
+  //   }
 
-    else if (type ==='minute') {
+  //   else if (type ==='minute') {
 
-      setMinutes(t);
+  //     setMinutes(t);
 
-    }
+  //   }
 
-    else if (type === 'second') {
+  //   else if (type === 'second') {
 
-      setSeconds(t);
+  //     setSeconds(t);
 
-    }
+  //   }
 
-    else  {
+  //   else  {
 
-      console.log('invalid timeOnClick type');
+  //     console.log('invalid timeOnClick type');
 
-    }
+  //   }
 
-    const tempTime = new Time(hours, minutes, seconds);
+  //   const tempTime = new Time(hours, minutes, seconds);
 
-    console.log(tempTime);
-    return {tempTime};
+  //   console.log(tempTime);
+  //   return {tempTime};
     
-  }
+  // }
 
 
   useEffect(() => {
@@ -161,9 +163,6 @@ export const TimerReact = (props: any) => {
     }
 
   });
-
-
-
 
 
   return (
