@@ -19,7 +19,7 @@ const useTimeInput = (item: any, timer: any, pause: any) => {
 
     useEffect (() => {
 
-        debugger;
+        
 
         if (item) {
 
