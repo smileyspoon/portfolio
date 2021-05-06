@@ -45,7 +45,7 @@ export class Time {
 
     convertToSeconds = () => {
 
-        debugger;
+        
         const h = this.h * 3600000;
         const m = this.m * 60000;
         const s = this.s * 1000;

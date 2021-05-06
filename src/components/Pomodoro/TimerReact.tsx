@@ -211,6 +211,18 @@ export const TimerReact = (props: any) => {
             }
 
             setNewTimer(createNewTimer());
+
+            const [h,m,s] = newTime.getAll();
+
+            
+            const tempTime = new Time(h.t, m.t, s.t);
+            setNewTime(tempTime);
+
+            setNewHour({type: 'hour', t:h.t});
+            setNewMinute({type: 'minute', t:m.t});
+            setNewSecond({type: 'second', t:s.t});
+
+
             setStart(true);
             setResume(false);
             setPause(false);
@@ -268,6 +280,9 @@ export const TimerReact = (props: any) => {
                 resume(newTimer);
                 setResume(false);
                 setPause(true);
+                setSave(false);
+                setCancel(false);
+                setEdit(true);
               }}>Resume</Button>
 
               :
@@ -280,9 +295,13 @@ export const TimerReact = (props: any) => {
 
           showEdit ?
             <Button className="button" onClick={() => {
+              pause(newTimer);
               setEdit(false);
               setSave(true);
               setCancel(true);
+              setPause(false);
+              setResume(true);
+
 
             }}>Edit</Button>
 
