@@ -300,7 +300,12 @@ export const TimerReact = (props: any) => {
               setSave(true);
               setCancel(true);
               setPause(false);
-              setResume(true);
+
+              if (!showStart) {
+                setResume(true);
+              }
+              
+
 
 
             }}>Edit</Button>
@@ -356,7 +361,7 @@ export const TimerReact = (props: any) => {
           
 
           {/* console log printout for debug */}
-          <Button className="button" onClick={() => { console.log(newTimer); console.log(newTime)  }}>Console Log </Button>
+          {/* <Button className="button" onClick={() => { console.log(newTimer); console.log(newTime)  }}>Console Log </Button> */}
 
         </Card>
       )
